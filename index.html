@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eco-pulse - Protege los Ecosistemas Terrestres | ODS 15</title>
+    <meta name="description" content="Plataforma ciudadana para reportar daños ambientales y participar en acciones ecológicas reales alineadas con el ODS 15.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Leaflet Map -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    
+    <!-- Feather Icons -->
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="Eco Pulse Logo (Sin letras).ico" type="image/x-icon">
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="container navbar__container">
+            <div class="navbar__logo">
+                <img src="Eco Pulse Logo (Sin letras).png" alt="Eco Pulse" class="logo__icon">
+                <span class="navbar__logo-text">Eco Pulse</span>
+            </div>
+            <button class="navbar__toggle" id="navToggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="navbar__menu" id="navMenu">
+                <li><a href="#inicio" class="navbar__link">Inicio</a></li>
+                <li><a href="#problemas" class="navbar__link">Problemas</a></li>
+                <li><a href="#soluciones" class="navbar__link">Soluciones</a></li>
+                <li><a href="#mapa" class="navbar__link">Mapa</a></li>
+                <li><a href="#como-funciona" class="navbar__link">Cómo Funciona</a></li>
+                <li><a href="#jornadas" class="navbar__link">Jornadas</a></li>
+                <li><a href="#impacto" class="navbar__link">Impacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero__content">
+                <h1 class="hero__title">Protege los ecosistemas de Córdoba desde tu comunidad</h1>
+                <p class="hero__subtitle">Denuncia daños ambientales del Caribe colombiano y participa en acciones ecológicas reales. Juntos cuidamos el Río Sinú, los bosques secos y la biodiversidad de Córdoba</p>
+                
+                <div class="hero__buttons">
+                    <button class="btn btn--primary" data-modal="reportar">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 5v14M5 12h14"></path>
+                        </svg>
+                        Reportar daño ambiental
+                    </button>
+                    <button class="btn btn--secondary" onclick="document.getElementById('mapa').scrollIntoView({behavior: 'smooth'})">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                            <circle cx="12" cy="10" r="3"></circle>
+                        </svg>
+                        Ver mapa
+                    </button>
+                </div>
+            </div>
+            
+            <div class="hero__visual">
+                <div class="hero__illustration">
+                    <img src="Principio.jpeg" alt="Imagen inicial Eco Pulse" class="hero__image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEMAS AMBIENTALES ACTUALES -->
+    <section class="environmental-issues" id="problemas">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Realidad Ambiental de Córdoba y Colombia</h2>
+                <p class="section__subtitle">Conoce los retos ambientales actuales que enfrenta nuestro territorio</p>
+            </div>
+            
+            <div class="issues-grid">
+                <div class="issue-card">
+                    <div class="issue-card__icon">🌳</div>
+                    <h3 class="issue-card__title">Deforestación</h3>
+                    <p class="issue-card__problem"><strong>Problema:</strong> Pérdida de bosques nativos por expansión agrícola y ganadería</p>
+                    <div class="issue-card__stats">
+                        <span class="stat-badge">↓15% anual</span>
+                        <span class="stat-badge">2.1M hectáreas/año</span>
+                    </div>
+                    <p class="issue-card__solution"><strong>Solución:</strong> Reforestación con especies nativas, sistemas agroforestales sostenibles</p>
+                </div>
+                
+                <div class="issue-card">
+                    <div class="issue-card__icon">💧</div>
+                    <h3 class="issue-card__title">Contaminación Hídrica</h3>
+                    <p class="issue-card__problem"><strong>Problema:</strong> Ríos y acuíferos contaminados por industria, agricultura y residuos domésticos</p>
+                    <div class="issue-card__stats">
+                        <span class="stat-badge">70% afectado</span>
+                        <span class="stat-badge">Río Sinú crítico</span>
+                    </div>
+                    <p class="issue-card__solution"><strong>Solución:</strong> Plantas de tratamiento, recuperación de riberas, educación comunitaria</p>
+                </div>
+                
+                <div class="issue-card">
+                    <div class="issue-card__icon">🌡️</div>
+                    <h3 class="issue-card__title">Cambio Climático</h3>
+                    <p class="issue-card__problem"><strong>Problema:</strong> Sequías extremas, inundaciones y alteración de ciclos naturales</p>
+                    <div class="issue-card__stats">
+                        <span class="stat-badge">+1.2°C</span>
+                        <span class="stat-badge">Precipitación irregular</span>
+                    </div>
+                    <p class="issue-card__solution"><strong>Solución:</strong> Energías renovables, adaptación agrícola, manejo de cuencas</p>
+                </div>
+                
+                <div class="issue-card">
+                    <div class="issue-card__icon">🦋</div>
+                    <h3 class="issue-card__title">Pérdida de Biodiversidad</h3>
+                    <p class="issue-card__problem"><strong>Problema:</strong> Extinción de especies endémicas y destrucción de hábitats naturales</p>
+                    <div class="issue-card__stats">
+                        <span class="stat-badge">240+ especies</span>
+                        <span class="stat-badge">En peligro crítico</span>
+                    </div>
+                    <p class="issue-card__solution"><strong>Solución:</strong> Áreas protegidas, corredores ecológicos, monitoreo continuo</p>
+                </div>
+                
+                <div class="issue-card">
+                    <div class="issue-card__icon">🗑️</div>
+                    <h3 class="issue-card__title">Gestión de Residuos</h3>
+                    <p class="issue-card__problem"><strong>Problema:</strong> Acumulación de basura, plásticos y residuos sin tratamiento adecuado</p>
+                    <div class="issue-card__stats">
+                        <span class="stat-badge">850k ton/año</span>
+                        <span class="stat-badge">Bajo reciclaje</span>
+                    </div>
+                    <p class="issue-card__solution"><strong>Solución:</strong> Economía circular, reciclaje comunitario, reducción en origen</p>
+                </div>
+                
+                <div class="issue-card">
+                    <div class="issue-card__icon">🌾</div>
+                    <h3 class="issue-card__title">Sobreexplotación Agraria</h3>
+                    <p class="issue-card__problem"><strong>Problema:</strong> Uso excesivo de pesticidas y degradación del suelo</p>
+                    <div class="issue-card__stats">
+                        <span class="stat-badge">85% suelo</span>
+                        <span class="stat-badge">Degradado</span>
+                    </div>
+                    <p class="issue-card__solution"><strong>Solución:</strong> Agricultura orgánica, rotación de cultivos, labranza sostenible</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOLUCIONES SOSTENIBLES -->
+    <section class="sustainable-solutions" id="soluciones">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Soluciones Sostenibles que Practicamos</h2>
+                <p class="section__subtitle">Acciones concretas y viables para restaurar nuestros ecosistemas</p>
+            </div>
+            
+            <div class="solutions-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker">1</div>
+                    <div class="timeline-content">
+                        <h3>Reforestación Nativa</h3>
+                        <p>Plantación de 50,000 árboles de especies endémicas de Córdoba como ceiba, guanacaste y caoba.</p>
+                        <div class="solution-impact">
+                            <span class="impact-badge">🌳 -1,200 ton CO₂</span>
+                            <span class="impact-badge">💧 +800 mil m³ agua</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">2</div>
+                    <div class="timeline-content">
+                        <h3>Recuperación de Cuencas Hídricas</h3>
+                        <p>Limpieza y protección del Río Sinú, sus tributarios y zonas de recarga de acuíferos.</p>
+                        <div class="solution-impact">
+                            <span class="impact-badge">💧 Agua limpia</span>
+                            <span class="impact-badge">🏞️ 150km ribera</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">3</div>
+                    <div class="timeline-content">
+                        <h3>Economía Circular y Reciclaje</h3>
+                        <p>Centros comunitarios de clasificación, acopio y transformación de residuos reciclables.</p>
+                        <div class="solution-impact">
+                            <span class="impact-badge">♻️ Empleo local</span>
+                            <span class="impact-badge">📉 -350k ton vertederos</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">4</div>
+                    <div class="timeline-content">
+                        <h3>Agricultura Orgánica y Agroforestería</h3>
+                        <p>Capacitación a agricultores para cultivos sostenibles sin químicos sintéticos.</p>
+                        <div class="solution-impact">
+                            <span class="impact-badge">🌾 Suelo recuperado</span>
+                            <span class="impact-badge">💰 Ingresos dignos</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">5</div>
+                    <div class="timeline-content">
+                        <h3>Energías Renovables Comunitarias</h3>
+                        <p>Instalación de paneles solares y sistemas eólicos en zonas rurales sin acceso a electricidad.</p>
+                        <div class="solution-impact">
+                            <span class="impact-badge">☀️ Energía limpia</span>
+                            <span class="impact-badge">🏘️ 5,000 familias</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker">6</div>
+                    <div class="timeline-content">
+                        <h3>Educación Ambiental y Voluntariado</h3>
+                        <p>Programas escolares y comunitarios para formar guardianes del ambiente comprometidos.</p>
+                        <div class="solution-impact">
+                            <span class="impact-badge">📚 15,000 estudiantes</span>
+                            <span class="impact-badge">👥 Cambio cultural</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="incidences-map" id="mapa">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Mapa de Incidencias Ambientales</h2>
+                <p class="section__subtitle">Visualiza los reportes de tu comunidad en tiempo real</p>
+            </div>
+            
+            <div class="map__filters">
+                <button class="filter__btn filter__btn--active" data-filter="all">Todos</button>
+                <button class="filter__btn" data-filter="tala">Tala ilegal</button>
+                <button class="filter__btn" data-filter="basura">Basura</button>
+                <button class="filter__btn" data-filter="incendio">Incendio</button>
+                <button class="filter__btn" data-filter="fauna">Fauna amenazada</button>
+            </div>
+            
+            <div class="map__container">
+                <div id="map"></div>
+                <div class="map__info-card" id="mapInfoCard" style="display: none;">
+                    <button class="map__info-close" onclick="document.getElementById('mapInfoCard').style.display = 'none'">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="18" y1="6" x2="6" y2="18"></line>
+                            <line x1="6" y1="6" x2="18" y2="18"></line>
+                        </svg>
+                    </button>
+                    <div class="badge" id="mapInfoCategory"></div>
+                    <h3 id="mapInfoTitle"></h3>
+                    <p id="mapInfoDescription"></p>
+                    <div class="map__info-meta">
+                        <span id="mapInfoDate"></span>
+                        <span id="mapInfoReports"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA -->
+    <section class="how-it-works" id="como-funciona">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Cómo Funciona</h2>
+                <p class="section__subtitle">Tres pasos simples para cuidar nuestros ecosistemas</p>
+            </div>
+            
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-card__number">1</div>
+                    <div class="step-card__icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path>
+                            <circle cx="12" cy="13" r="4"></circle>
+                        </svg>
+                    </div>
+                    <h3 class="step-card__title">Reporta</h3>
+                    <p class="step-card__description">Toma una foto, describe el daño ambiental y comparte su ubicación exacta desde tu teléfono</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-card__number">2</div>
+                    <div class="step-card__icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M9 11l3 3L22 4"></path>
+                            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+                        </svg>
+                    </div>
+                    <h3 class="step-card__title">Verificamos</h3>
+                    <p class="step-card__description">Nuestro equipo de verificadores valida el reporte y coordina con autoridades locales</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-card__number">3</div>
+                    <div class="step-card__icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path>
+                            <path d="M12 6v6l4 2"></path>
+                        </svg>
+                    </div>
+                    <h3 class="step-card__title">Actuamos</h3>
+                    <p class="step-card__description">Se ejecutan acciones reales: reforestación, limpieza o protección según corresponda</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JORNADAS ECOLÓGICAS -->
+    <section class="events" id="jornadas">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Jornadas Ecológicas</h2>
+                <p class="section__subtitle">Participa en acciones de impacto real en tu zona</p>
+            </div>
+            
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-card__image">
+                        <div class="event-card__badge badge badge--planting">Reforestación</div>
+                        <img src="Reforestación.webp" alt="Reforestación Río Sinú" class="event-card__img">
+                    </div>
+                    <div class="event-card__content">
+                        <h3 class="event-card__title">Reforestación Río Sinú</h3>
+                        <div class="event-card__info">
+                            <div class="info-item">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                <span>18 de Marzo, 2026</span>
+                            </div>
+                            <div class="info-item">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <span>Montería, Córdoba</span>
+                            </div>
+                        </div>
+                        <div class="event-card__quota">450 / <strong>1000</strong> voluntarios</div>
+                        <button class="btn btn--primary btn--small">Unirme</button>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-card__image">
+                        <div class="event-card__badge badge badge--cleanup">Limpieza</div>
+                        <img src="Ribera.jpg" alt="Limpieza Ribera Sinú" class="event-card__img">
+                    </div>
+                    <div class="event-card__content">
+                        <h3 class="event-card__title">Limpieza Ribera Sinú</h3>
+                        <div class="event-card__info">
+                            <div class="info-item">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                <span>25 de Marzo, 2026</span>
+                            </div>
+                            <div class="info-item">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <span>San Bernardo del Viento</span>
+                            </div>
+                        </div>
+                        <div class="event-card__quota">320 / <strong>600</strong> voluntarios</div>
+                        <button class="btn btn--primary btn--small">Unirme</button>
+                    </div>
+                </div>
+                
+                <div class="event-card">
+                    <div class="event-card__image">
+                        <div class="event-card__badge badge badge--protect">Monitoreo</div>
+                        <img src="Fauna Humedales.webp" alt="Monitoreo Fauna Humedales" class="event-card__img">
+                    </div>
+                    <div class="event-card__content">
+                        <h3 class="event-card__title">Monitoreo Fauna Humedales</h3>
+                        <div class="event-card__info">
+                            <div class="info-item">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="3" y="4" width="18" height="18" rx="2"></rect>
+                                    <line x1="16" y1="2" x2="16" y2="6"></line>
+                                    <line x1="8" y1="2" x2="8" y2="6"></line>
+                                    <line x1="3" y1="10" x2="21" y2="10"></line>
+                                </svg>
+                                <span>01 de Abril, 2026</span>
+                            </div>
+                            <div class="info-item">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                    <circle cx="12" cy="10" r="3"></circle>
+                                </svg>
+                                <span>Cispata, Córdoba</span>
+                            </div>
+                        </div>
+                        <div class="event-card__quota">180 / <strong>400</strong> voluntarios</div>
+                        <button class="btn btn--primary btn--small">Unirme</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PANEL DE IMPACTO -->
+    <section class="impact-panel" id="impacto">
+        <div class="container">
+            <div class="section__header">
+                <h2 class="section__title">Nuestro Impacto</h2>
+                <p class="section__subtitle">Números que demuestran nuestro compromiso con la Vida de los Ecosistemas Terrestres</p>
+            </div>
+            
+            <div class="metrics-grid">
+                <div class="metric-card metric-card--trees">
+                    <div class="metric-card__icon">🌳</div>
+                    <div class="metric-card__number" data-count="25847">0</div>
+                    <div class="metric-card__label">Árboles Plantados</div>
+                    <div class="metric-card__progress">
+                        <div class="progress-bar" style="width: 78%"></div>
+                    </div>
+                    <span class="metric-card__target">Meta: 50k árboles</span>
+                </div>
+                
+                <div class="metric-card metric-card--trash">
+                    <div class="metric-card__icon">♻️</div>
+                    <div class="metric-card__number" data-count="5430">0</div>
+                    <div class="metric-card__label">Kg Basura Recolectada</div>
+                    <div class="metric-card__progress">
+                        <div class="progress-bar" style="width: 65%"></div>
+                    </div>
+                    <span class="metric-card__target">Meta: 10k kg</span>
+                </div>
+                
+                <div class="metric-card metric-card--zones">
+                    <div class="metric-card__icon">🌍</div>
+                    <div class="metric-card__number" data-count="48">0</div>
+                    <div class="metric-card__label">Zonas Recuperadas</div>
+                    <div class="metric-card__progress">
+                        <div class="progress-bar" style="width: 80%"></div>
+                    </div>
+                    <span class="metric-card__target">Meta: 100 zonas</span>
+                </div>
+                
+                <div class="metric-card metric-card--volunteers">
+                    <div class="metric-card__icon">👥</div>
+                    <div class="metric-card__number" data-count="3654">0</div>
+                    <div class="metric-card__label">Voluntarios Activos</div>
+                    <div class="metric-card__progress">
+                        <div class="progress-bar" style="width: 73%"></div>
+                    </div>
+                    <span class="metric-card__target">Meta: 10k voluntarios</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="cta-final">
+        <div class="container">
+            <div class="cta-final__content">
+                <h2 class="cta-final__title">Sé parte del cambio</h2>
+                <p class="cta-final__text">Cada acción cuenta. Desde un simple reporte hasta participar en jornadas de impacto, tú tienes el poder de proteger nuestros ecosistemas terrestres.</p>
+                <button class="btn btn--primary btn--large" data-modal="registro">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    Únete al cambio
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="contacto">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__section">
+                    <h4 class="footer__title">Eco-pulse</h4>
+                    <p class="footer__description">Plataforma ciudadana de monitoreo ambiental alineada con el ODS 15: Vida de Ecosistemas Terrestres</p>
+                    <div class="footer__socials">
+                        <a href="#" class="social-link" aria-label="Facebook">f</a>
+                        <a href="#" class="social-link" aria-label="Twitter">𝕏</a>
+                        <a href="#" class="social-link" aria-label="Instagram">📷</a>
+                        <a href="#" class="social-link" aria-label="LinkedIn">in</a>
+                    </div>
+                </div>
+                
+                <div class="footer__section">
+                    <h4 class="footer__title">Enlaces Rápidos</h4>
+                    <ul class="footer__links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#mapa">Mapa</a></li>
+                        <li><a href="#como-funciona">Cómo Funciona</a></li>
+                        <li><a href="#jornadas">Jornadas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__section">
+                    <h4 class="footer__title">Información</h4>
+                    <ul class="footer__links">
+                        <li><a href="#">Privacidad</a></li>
+                        <li><a href="#">Términos de Uso</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__section">
+                    <h4 class="footer__title">ODS 15</h4>
+                    <p class="footer__small">Vida de Ecosistemas Terrestres - Proteger, restaurar y promover el uso sostenible de los ecosistemas terrestres</p>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p>&copy; 2026 Eco-pulse. Todos los derechos reservados. | Alineado con ODS 15</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL DE REPORTE -->
+    <div class="modal" id="modalReportar">
+        <div class="modal__content">
+            <button class="modal__close" onclick="closeModal('modalReportar')">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            
+            <h2 class="modal__title">Reportar Daño Ambiental</h2>
+            
+            <form class="form" id="formReporte">
+                <div class="form__group">
+                    <label for="categoria" class="form__label">Tipo de Daño</label>
+                    <select id="categoria" class="form__input" required>
+                        <option value="">Selecciona una categoría</option>
+                        <option value="tala">Tala ilegal</option>
+                        <option value="basura">Basura/Contaminación</option>
+                        <option value="incendio">Incendio forestal</option>
+                        <option value="fauna">Fauna amenazada</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                </div>
+                
+                <div class="form__group">
+                    <label for="descripcion" class="form__label">Descripción detallada</label>
+                    <textarea id="descripcion" class="form__input form__input--textarea" placeholder="Describe qué observaste..." required></textarea>
+                </div>
+                
+                <div class="form__group">
+                    <label for="ubicacion" class="form__label">Ubicación (dirección o punto de referencia)</label>
+                    <input type="text" id="ubicacion" class="form__input" placeholder="Ej: Calle Principal 123, cercanías Parque..." required>
+                </div>
+                
+                <div class="form__group">
+                    <label for="foto" class="form__label">Foto del daño</label>
+                    <input type="file" id="foto" class="form__input" accept="image/*">
+                </div>
+                
+                <div class="form__group">
+                    <label for="nombre" class="form__label">Tu nombre</label>
+                    <input type="text" id="nombre" class="form__input" placeholder="Nombre completo" required>
+                </div>
+                
+                <div class="form__group">
+                    <label for="email" class="form__label">Tu email</label>
+                    <input type="email" id="email" class="form__input" placeholder="tu@email.com" required>
+                </div>
+                
+                <button type="submit" class="btn btn--primary btn--large">Enviar Reporte</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MODAL DE REGISTRO VOLUNTARIO -->
+    <div class="modal" id="modalRegistro">
+        <div class="modal__content">
+            <button class="modal__close" onclick="closeModal('modalRegistro')">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            
+            <h2 class="modal__title">Únete como Voluntario</h2>
+            
+            <form class="form" id="formRegistro">
+                <div class="form__group">
+                    <label for="nombreVoluntario" class="form__label">Nombre completo</label>
+                    <input type="text" id="nombreVoluntario" class="form__input" placeholder="Tu nombre completo" required>
+                </div>
+                
+                <div class="form__group">
+                    <label for="emailVoluntario" class="form__label">Correo electrónico</label>
+                    <input type="email" id="emailVoluntario" class="form__input" placeholder="tu@email.com" required>
+                </div>
+                
+                <div class="form__group">
+                    <label for="telefono" class="form__label">Teléfono (opcional)</label>
+                    <input type="tel" id="telefono" class="form__input" placeholder="+57 300 123 4567">
+                </div>
+                
+                <div class="form__group">
+                    <label class="form__label">Actividades de voluntariado de interés</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="actividades" value="reforestacion">
+                            <span class="checkmark"></span>
+                            Reforestación de zonas verdes
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="actividades" value="fauna">
+                            <span class="checkmark"></span>
+                            Preservación de fauna local
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="actividades" value="agua">
+                            <span class="checkmark"></span>
+                            Tratamientos de fuentes hídricas (ríos y arroyos)
+                        </label>
+                    </div>
+                </div>
+                
+                <div class="form__group">
+                    <label for="experiencia" class="form__label">Experiencia previa (opcional)</label>
+                    <textarea id="experiencia" class="form__input form__input--textarea" placeholder="Describe cualquier experiencia relevante en actividades ambientales..."></textarea>
+                </div>
+                
+                <button type="submit" class="btn btn--primary btn--large">Registrarme como Voluntario</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="scripts.js"></script>
+</body>
+</html>

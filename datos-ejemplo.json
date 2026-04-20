@@ -1,0 +1,245 @@
+{
+  "departamento": "Córdoba",
+  "pais": "Colombia",
+  "plataforma": "Eco-pulse",
+  "reportes": [
+    {
+      "id": 1,
+      "titulo": "Tala ilegal zona bosque",
+      "descripcion": "Se reporta tala ilegal en área protegida. Aproximadamente 15 árboles talados. Zona crítica que requiere intervención inmediata.",
+      "categoria": "tala",
+      "ubicacion": {
+        "latitud": 4.7110,
+        "longitud": -74.0721,
+        "direccion": "Reserva Forestal Metropolitana, Bogotá"
+      },
+      "estado": "verificado",
+      "fecha_reporte": "2026-02-25",
+      "reportes_similares": 12,
+      "prioridad": "alta",
+      "evidencia": {
+        "foto": "reporte_001.jpg",
+        "descripcion_foto": "Se observan tocones frescos de árboles talados"
+      },
+      "usuario": {
+        "id": "user_123",
+        "nombre": "Carlos López",
+        "email": "carlos@email.com",
+        "anonimo": false
+      }
+    },
+    {
+      "id": 2,
+      "titulo": "Acumulación de residuos",
+      "descripcion": "Basura acumulada en potrero abandonado. Requiere limpieza urgente. Residuos de construcción y domésticos.",
+      "categoria": "basura",
+      "ubicacion": {
+        "latitud": 4.8152,
+        "longitud": -74.0536,
+        "direccion": "Potrero Abandonado, Usaquén"
+      },
+      "estado": "en_proceso",
+      "fecha_reporte": "2026-02-28",
+      "reportes_similares": 8,
+      "prioridad": "media",
+      "evidencia": {
+        "foto": "reporte_002.jpg",
+        "descripcion_foto": "Acumulación de residuos diversos"
+      },
+      "usuario": {
+        "id": "user_456",
+        "nombre": "María Rodríguez",
+        "email": "maria@email.com",
+        "anonimo": false
+      }
+    },
+    {
+      "id": 3,
+      "titulo": "Incendio forestal controlado",
+      "descripcion": "Incendio forestal en ladera sur. Ya ha sido contenido por autoridades. No hay reportes de heridos.",
+      "categoria": "incendio",
+      "ubicacion": {
+        "latitud": 4.6426,
+        "longitud": -74.0921,
+        "direccion": "Cerros Orientales, Bogotá"
+      },
+      "estado": "resuelto",
+      "fecha_reporte": "2026-03-01",
+      "reportes_similares": 24,
+      "prioridad": "critica",
+      "evidencia": {
+        "foto": "reporte_003.jpg",
+        "descripcion_foto": "Zona afectada por incendio"
+      },
+      "usuario": {
+        "id": "user_789",
+        "nombre": "Juan Pérez",
+        "email": "juan@email.com",
+        "anonimo": true
+      }
+    },
+    {
+      "id": 4,
+      "titulo": "Fauna amenazada avistada",
+      "descripcion": "Se avistó grupo de aves migratorias en zona urbana. Requiere protección inmediata. Es una especie vulnerable.",
+      "categoria": "fauna",
+      "ubicacion": {
+        "latitud": 4.9227,
+        "longitud": -74.1233,
+        "direccion": "Humedal La Florida, Bogotá"
+      },
+      "estado": "verificado",
+      "fecha_reporte": "2026-02-27",
+      "reportes_similares": 5,
+      "prioridad": "alta",
+      "evidencia": {
+        "foto": "reporte_004.jpg",
+        "descripcion_foto": "Aves migratorias en el humedal"
+      },
+      "usuario": {
+        "id": "user_321",
+        "nombre": "Ana García",
+        "email": "ana@email.com",
+        "anonimo": false
+      }
+    }
+  ],
+  "eventos": [
+    {
+      "id": 1,
+      "titulo": "Plantón Bosque Esperanza",
+      "descripcion": "Jornada de reforestación en la Reserva Forestal Metropolitana. Se plantarán 500 árboles nativos.",
+      "tipo": "reforestacion",
+      "fecha": "2026-03-15",
+      "hora_inicio": "08:00",
+      "hora_fin": "14:00",
+      "ubicacion": {
+        "nombre": "Parque Central, km 5",
+        "latitud": 4.7110,
+        "longitud": -74.0721
+      },
+      "voluntarios": {
+        "registrados": 500,
+        "capacidad": 1000
+      },
+      "requisitos": [
+        "Ropa cómoda y cerrada",
+        "Calzado deportivo",
+        "Traer agua"
+      ],
+      "organizador": "Eco-pulse + Secretaría de Ambiente",
+      "imagen": "evento_001.svg"
+    },
+    {
+      "id": 2,
+      "titulo": "Limpieza Río Verde",
+      "descripcion": "Jornada de limpieza y descontaminación de la ribera del Río Verde. Enfoque en residuos plásticos.",
+      "tipo": "limpieza",
+      "fecha": "2026-03-22",
+      "hora_inicio": "09:00",
+      "hora_fin": "13:00",
+      "ubicacion": {
+        "nombre": "Ribera Río Verde",
+        "latitud": 4.8152,
+        "longitud": -74.0536
+      },
+      "voluntarios": {
+        "registrados": 320,
+        "capacidad": 500
+      },
+      "requisitos": [
+        "Guantes de trabajo",
+        "Calzado cerrado",
+        "Ropa que se pueda ensuciar"
+      ],
+      "organizador": "Eco-pulse + Corporación Ambiental",
+      "imagen": "evento_002.svg"
+    },
+    {
+      "id": 3,
+      "titulo": "Monitoreo Fauna Silvestre",
+      "descripcion": "Expedición científica para monitorear población de fauna en la Reserva Natural. Perfecto para observadores.",
+      "tipo": "proteccion",
+      "fecha": "2026-03-29",
+      "hora_inicio": "06:00",
+      "hora_fin": "11:00",
+      "ubicacion": {
+        "nombre": "Reserva Natural Selva",
+        "latitud": 4.9227,
+        "longitud": -74.1233
+      },
+      "voluntarios": {
+        "registrados": 150,
+        "capacidad": 300
+      },
+      "requisitos": [
+        "Capacitación previa recomendada",
+        "Binoculares",
+        "Paciencia y silencio"
+      ],
+      "organizador": "Eco-pulse + Instituto de Biodiversidad",
+      "imagen": "evento_003.svg"
+    }
+  ],
+  "metricas": {
+    "arboles_plantados": {
+      "valor": 25847,
+      "meta": 50000,
+      "unidad": "árboles",
+      "porcentaje": 51.7
+    },
+    "basura_recolectada": {
+      "valor": 5430,
+      "meta": 10000,
+      "unidad": "kg",
+      "porcentaje": 54.3
+    },
+    "zonas_recuperadas": {
+      "valor": 48,
+      "meta": 100,
+      "unidad": "zonas",
+      "porcentaje": 48
+    },
+    "voluntarios_activos": {
+      "valor": 3654,
+      "meta": 10000,
+      "unidad": "voluntarios",
+      "porcentaje": 36.54
+    }
+  },
+  "categorias": [
+    {
+      "id": "tala",
+      "titulo": "Tala Ilegal",
+      "emoji": "🪵",
+      "color": "#D32F2F",
+      "descripcion": "Tala de árboles en áreas protegidas o sin autorización"
+    },
+    {
+      "id": "basura",
+      "titulo": "Basura/Contaminación",
+      "emoji": "🗑️",
+      "color": "#9C27B0",
+      "descripcion": "Acumulación de residuos o contaminación ambiental"
+    },
+    {
+      "id": "incendio",
+      "titulo": "Incendio Forestal",
+      "emoji": "🔥",
+      "color": "#FF9800",
+      "descripcion": "Incendios forestales en ecosistemas terrestres"
+    },
+    {
+      "id": "fauna",
+      "titulo": "Fauna Amenazada",
+      "emoji": "🦋",
+      "color": "#4CAF50",
+      "descripcion": "Avistamiento de especies amenazadas o en peligro"
+    }
+  ],
+  "usuarios": {
+    "total": 15420,
+    "verificadores": 45,
+    "administradores": 5
+  }
+}

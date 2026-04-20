@@ -1,0 +1,297 @@
+{
+  "departamento": "Córdoba",
+  "pais": "Colombia",
+  "descripcion": "Base de datos de Eco-pulse para Córdoba - Problemática Ambiental y Soluciones Sostenibles",
+  
+  "problemas_ambientales": [
+    {
+      "id": "deforestacion",
+      "nombre": "Deforestación",
+      "icon": "🌳",
+      "problema": "Pérdida anual de 15% de bosques nativos por expansión agrícola y ganadería sin regulación",
+      "estadisticas": {
+        "bosques_perdidos_anualmente": "210,000 hectáreas",
+        "tasa_anual": "15%",
+        "impacto": "2.1 millones hectáreas/año en Colombia"
+      },
+      "zonas_afectadas": ["Yarumales", "Cenicero", "San Bernardo del Viento"],
+      "soluciones": [
+        "Reforestación con especies nativas (ceiba, guanacaste, caoba)",
+        "Sistemas agroforestales sostenibles",
+        "Protección de bosques remanentes",
+        "Vigilancia comunitaria"
+      ]
+    },
+    {
+      "id": "contaminacion_hidrica",
+      "nombre": "Contaminación Hídrica",
+      "icon": "💧",
+      "problema": "Ríos y acuíferos contaminados por industria, agricultura y residuos domésticos. Río Sinú es crítico.",
+      "estadisticas": {
+        "fuentes_afectadas": "70%",
+        "contaminantes_principales": ["Plásticos", "Agroquímicos", "Aguas residuales"],
+        "municipios_criticos": ["Montería", "Lorica"]
+      },
+      "entidades_afectadas": ["Río Sinú", "Acuífero San Fernando", "Humedales Cispata"],
+      "soluciones": [
+        "Plantas de tratamiento de aguas residuales",
+        "Recuperación y reforestación de riberas",
+        "Campañas de educación comunitaria",
+        "Control de vertimientos industriales"
+      ]
+    },
+    {
+      "id": "cambio_climatico",
+      "nombre": "Cambio Climático",
+      "icon": "🌡️",
+      "problema": "Sequías extremas, inundaciones y alteración de ciclos naturales en la región Caribe colombiana",
+      "estadisticas": {
+        "aumento_temperatura": "+1.2°C en 15 años",
+        "cambio_precipitacion": "Irregular: sequías de 4-5 meses",
+        "eventos_extremos": "Incremento 40%"
+      },
+      "consequencias": ["Pérdida agrícola", "Estrés hídrico", "Migración forzada"],
+      "soluciones": [
+        "Energías renovables comunitarias (solar y eólica)",
+        "Agricultura resiliente y adaptada al clima",
+        "Manejo inteligente de cuencas hídricas",
+        "Educación sobre cambio climático"
+      ]
+    },
+    {
+      "id": "perdida_biodiversidad",
+      "nombre": "Pérdida de Biodiversidad",
+      "icon": "🦋",
+      "problema": "Extinción de especies endémicas y destrucción de hábitats naturales críticos para la vida silvestre",
+      "estadisticas": {
+        "especies_amenazadas": 240,
+        "endemicas_cordoba": 45,
+        "en_peligro_critico": 32
+      },
+      "especies_clave": ["Cocodrilo americano", "Jaguar", "Mono araña", "Loro orejiamarillo"],
+      "soluciones": [
+        "Creación de áreas protegidas estratégicas",
+        "Corredores ecológicos entre hábitats",
+        "Monitoreo continuo de poblaciones",
+        "Programas de reproducción en cautiverio"
+      ]
+    },
+    {
+      "id": "gestion_residuos",
+      "nombre": "Gestión de Residuos",
+      "icon": "🗑️",
+      "problema": "Acumulación de basura, plásticos y residuos sin tratamiento adecuado en vertederos incontrolados",
+      "estadisticas": {
+        "residuos_anuales": "850,000 toneladas",
+        "tasa_reciclaje": "8%",
+        "plastico_acumulado": "Estimado 400,000 ton"
+      },
+      "problemas_asociados": ["Contaminación visual", "Proliferación de roedores", "Gases invernadero"],
+      "soluciones": [
+        "Economía circular: reducir, reutilizar, reciclar",
+        "Centros comunitarios de acopio",
+        "Educación sobre consumo responsable",
+        "Transformación de residuos en recursos"
+      ]
+    },
+    {
+      "id": "agricultura_sostenible",
+      "nombre": "Sobreexplotación Agraria",
+      "icon": "🌾",
+      "problema": "Uso excesivo de pesticidas y degradación del suelo por monocultivos y labranza intensiva",
+      "estadisticas": {
+        "suelo_degradado": "85%",
+        "erosion_anual": "4.8 ton/hectárea",
+        "pesticida_uso": "12 kg/hectárea/año"
+      },
+      "consecuencias": ["Infertilidad del suelo", "Contaminación de acuíferos", "Pérdida de biodiversidad"],
+      "soluciones": [
+        "Agricultura orgánica y agroecológica",
+        "Rotación de cultivos",
+        "Labranza de conservación",
+        "Capacitación a agricultores"
+      ]
+    }
+  ],
+  
+  "soluciones_practicas": [
+    {
+      "id": "reforestacion",
+      "nombre": "Reforestación Nativa",
+      "descripcion": "Plantación de 50,000 árboles de especies endémicas de Córdoba para restaurar ecosistemas",
+      "especies": ["Ceiba", "Guanacaste", "Caoba", "Roble blanco", "Caracolí", "Mango"],
+      "ubicaciones": ["Río Sinú", "Yarumales", "San Bernardo del Viento"],
+      "impacto_anual": {
+        "arboles_plantados": 8000,
+        "hectareas_reforestadas": 5,
+        "co2_capturado_toneladas": 1200,
+        "agua_infiltrada_millones_m3": 0.8,
+        "biodiversidad_recuperada": "45 especies"
+      },
+      "beneficiarios": "4,500 personas en 12 comunidades",
+      "duracion": "Permanente (rotación de 5 años)"
+    },
+    {
+      "id": "recuperacion_cuencas",
+      "nombre": "Recuperación de Cuencas Hídricas",
+      "descripcion": "Limpieza, protección y restauración del Río Sinú y sus tributarios",
+      "acciones": [
+        "Limpieza de ribera de residuos",
+        "Siembra de árboles nativos en ribera",
+        "Cierre de puntos de vertimiento ilegal",
+        "Monitoreo de calidad del agua",
+        "Educación comunitaria sobre prevención"
+      ],
+      "rio_principal": "Río Sinú",
+      "tributarios": ["Río Esmeralda", "Río Cauca", "Caño Viejo"],
+      "impacto_anual": {
+        "ribera_rehabilitada_km": 15,
+        "mejora_calidad_agua_porcentaje": 30,
+        "volumen_basura_removido_toneladas": 450,
+        "poblacion_beneficiada": 25000
+      }
+    },
+    {
+      "id": "economia_circular",
+      "nombre": "Economía Circular y Reciclaje",
+      "descripcion": "Centros comunitarios de clasificación, transformación y comercialización de residuos reciclables",
+      "modelos": [
+        "Acopio y clasificación comunitaria",
+        "Transformación en nuevos productos",
+        "Venta al sector industrial",
+        "Generación de ingresos locales"
+      ],
+      "centros": ["Montería", "Lorica", "San Bernardo del Viento", "Tierralta"],
+      "impacto_anual": {
+        "residuos_reciclados_toneladas": 350000,
+        "empleos_directos": 150,
+        "empleos_indirectos": 500,
+        "reduccion_vertederos_toneladas": 280000,
+        "ingresos_generados_dolares": 450000
+      }
+    },
+    {
+      "id": "agricultura_sostenible",
+      "nombre": "Agricultura Orgánica y Agroforestería",
+      "descripcion": "Capacitación y transición a sistemas agrícolas sostenibles sin químicos sintéticos",
+      "tecnicas": [
+        "Cultivos sin uso de pesticidas",
+        "Rotación de cultivos",
+        "Incorporación de árboles en parcelas",
+        "Compostaje y abonos naturales",
+        "Riego inteligente"
+      ],
+      "cultivos_prioritarios": ["Cacao", "Frutas", "Hortalizas", "Maíz"],
+      "impacto_anual": {
+        "agricultores_capacitados": 250,
+        "hectareas_en_transicion": 500,
+        "mejora_suelo_materia_organica": "15%",
+        "ingresos_agricultores_aumento": "45%",
+        "reduccion_pesticidas": "100%"
+      }
+    },
+    {
+      "id": "energias_renovables",
+      "nombre": "Energías Renovables Comunitarias",
+      "descripcion": "Instalación de paneles solares y sistemas eólicos en zonas rurales sin acceso a electricidad",
+      "tecnologias": [
+        "Paneles solares fotovoltaicos",
+        "Sistemas de almacenamiento (baterías)",
+        "Mini turbinas eólicas",
+        "Sistemas híbridos solar-eólico"
+      ],
+      "zonas_focus": ["Yarumales", "Cispata", "Zona rural Tierralta"],
+      "impacto_anual": {
+        "familias_electrificadas": 5000,
+        "capacidad_instalada_kwp": 2500,
+        "energia_limpia_generada_mwh": 3750,
+        "reduccion_co2_toneladas": 1875,
+        "costo_energia_reduccion": "60%"
+      }
+    },
+    {
+      "id": "educacion_ambiental",
+      "nombre": "Educación Ambiental y Voluntariado",
+      "descripcion": "Programas escolares y comunitarios para formar guardianes del ambiente",
+      "programas": [
+        "Cátedra de educación ambiental en escuelas",
+        "Talleres comunitarios de sostenibilidad",
+        "Jornadas de voluntariado ambiental",
+        "Campañas de concienciación",
+        "Mentores ambientales comunitarios"
+      ],
+      "poblacion_objetivo": ["Estudiantes", "Agricultores", "Comerciantes", "Autoridades locales"],
+      "impacto_anual": {
+        "estudiantes_capacitados": 15000,
+        "docentes_entrenados": 200,
+        "comunidades_alcanzadas": 45,
+        "cambio_ambiental_familias": "35%",
+        "voluntarios_activos": 3654
+      }
+    }
+  ],
+  
+  "eventos_principales": [
+    {
+      "id": 1,
+      "nombre": "Reforestación Río Sinú",
+      "municipio": "Montería",
+      "fecha": "2026-03-18",
+      "voluntarios_meta": 1000,
+      "arboles_a_plantar": 500,
+      "especies": ["Ceiba", "Guanacaste"],
+      "impacto": "5 hectáreas recuperadas"
+    },
+    {
+      "id": 2,
+      "nombre": "Limpieza Ribera Sinú",
+      "municipio": "San Bernardo del Viento",
+      "fecha": "2026-03-25",
+      "voluntarios_meta": 600,
+      "basura_esperada_kg": 5000,
+      "enfoque": "Plásticos y residuos domésticos"
+    },
+    {
+      "id": 3,
+      "nombre": "Monitoreo Fauna Humedales",
+      "municipio": "Cispata",
+      "fecha": "2026-04-01",
+      "voluntarios_meta": 400,
+      "especies_monitorear": ["Cocodrilo americano", "Aves migratorias"],
+      "objetivo": "Censo de población"
+    }
+  ],
+  
+  "estadisticas_globales": {
+    "region": "Córdoba, Colombia",
+    "poblacion": "1.8 millones",
+    "area_km2": 25020,
+    "biodiversidad": {
+      "especies_aves": 850,
+      "especies_mamiferos": 180,
+      "especies_reptiles": 95,
+      "especies_peces": 210
+    },
+    "ecosistemas_prioritarios": [
+      "Bosque seco tropical",
+      "Humedales costeros",
+      "Manglares",
+      "Sabanas"
+    ],
+    "amenazas_principales": [
+      "Deforestación",
+      "Contaminación hídrica",
+      "Cambio climático",
+      "Ganadería extensiva"
+    ],
+    "impacto_acumulado": {
+      "arboles_plantados": 25847,
+      "meta_arboles": 50000,
+      "basura_recolectada_kg": 5430000,
+      "zonas_recuperadas": 48,
+      "voluntarios_activos": 3654,
+      "comunidades_beneficiadas": 127,
+      "anos_activos": 3
+    }
+  }
+}
