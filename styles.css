@@ -82,6 +82,179 @@ body {
     overflow-x: hidden;
 }
 
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1rem;
+    border-radius: 999px;
+    background: rgba(46, 125, 50, 0.1);
+    color: var(--color-primary);
+    border: 1px solid rgba(46, 125, 50, 0.16);
+    font-weight: 600;
+    transition: background var(--transition-base), color var(--transition-base), transform var(--transition-base);
+}
+
+.theme-toggle:hover {
+    transform: translateY(-1px);
+    background: rgba(46, 125, 50, 0.18);
+}
+
+.theme-toggle__icon {
+    font-size: 1rem;
+}
+
+body.dark-mode {
+    background-color: #08111f;
+    color: #e6eef9;
+}
+
+body.dark-mode .navbar,
+body.dark-mode .footer,
+body.dark-mode .hero,
+body.dark-mode .sustainable-solutions,
+body.dark-mode .section__header,
+body.dark-mode .issue-card,
+body.dark-mode .timeline-content,
+body.dark-mode .step-card,
+body.dark-mode .event-card,
+body.dark-mode .metric-card,
+body.dark-mode .cta-final,
+body.dark-mode .modal__content,
+body.dark-mode .form,
+body.dark-mode .form__input,
+body.dark-mode .checkbox-label,
+body.dark-mode .footer__section,
+body.dark-mode .footer__bottom {
+    background-color: #0F1B33;
+    color: #e6eef9;
+}
+
+body.dark-mode .map__container,
+body.dark-mode .map__info-card,
+body.dark-mode .map__filters {
+    background-color: #ffffff;
+    color: #0f172a;
+    border-color: rgba(15, 23, 42, 0.1);
+    box-shadow: var(--shadow-lg);
+}
+
+body.dark-mode .navbar {
+    background: rgba(3, 18, 38, 0.98);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+body.dark-mode .hero {
+    background: linear-gradient(135deg, #04101f 0%, #0D243D 100%);
+}
+
+body.dark-mode .sustainable-solutions {
+    background: #06111f;
+}
+
+body.dark-mode .timeline-content,
+body.dark-mode .issue-card,
+body.dark-mode .step-card,
+body.dark-mode .event-card,
+body.dark-mode .metric-card,
+body.dark-mode .cta-final,
+body.dark-mode .modal__content,
+body.dark-mode .form {
+    background-color: #0F172A;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.24);
+}
+
+body.dark-mode .timeline-content:hover,
+body.dark-mode .issue-card:hover,
+body.dark-mode .event-card:hover,
+body.dark-mode .metric-card:hover,
+body.dark-mode .modal__content:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 22px 44px rgba(0, 0, 0, 0.26);
+}
+
+body.dark-mode .timeline-marker {
+    background: #2E7D32;
+    border-color: #0B1220;
+}
+
+body.dark-mode .solution-impact {
+    border-top-color: rgba(255,255,255,0.08);
+}
+
+body.dark-mode .impact-badge {
+    background: rgba(46, 125, 50, 0.18);
+    color: #C8E6C9;
+    border-color: rgba(46,125,50,0.24);
+}
+
+body.dark-mode .navbar__link,
+body.dark-mode .footer a,
+body.dark-mode .footer__title,
+body.dark-mode .footer__description,
+body.dark-mode .footer__small,
+body.dark-mode .section__title,
+body.dark-mode .section__subtitle,
+body.dark-mode .hero__subtitle,
+body.dark-mode .issue-card__title,
+body.dark-mode .issue-card__problem,
+body.dark-mode .issue-card__solution,
+body.dark-mode .timeline-content h3,
+body.dark-mode .timeline-content p,
+body.dark-mode .step-card__title,
+body.dark-mode .step-card__description,
+body.dark-mode .event-card__title,
+body.dark-mode .event-card__info,
+body.dark-mode .event-card__quota,
+body.dark-mode .metric-card__number,
+body.dark-mode .metric-card__label,
+body.dark-mode .metric-card__target,
+body.dark-mode .cta-final__title,
+body.dark-mode .cta-final__text,
+body.dark-mode .modal__title,
+body.dark-mode .form__label,
+body.dark-mode .checkbox-label,
+body.dark-mode .footer p,
+body.dark-mode .footer__links a {
+    color: #E5E7EB;
+}
+
+body.dark-mode .btn--primary,
+body.dark-mode .btn--small,
+body.dark-mode .btn--large {
+    background: #2E7D32;
+    color: #FFFFFF;
+}
+
+body.dark-mode .btn--secondary {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255,255,255,0.14);
+    color: #E5E7EB;
+}
+
+body.dark-mode .form__input {
+    background: #0A1829;
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #E5E7EB;
+}
+
+body.dark-mode .map__filters {
+    background: #FFFFFF;
+    color: #0f172a;
+}
+
+body.dark-mode .navbar__toggle span {
+    background: #E5E7EB;
+}
+
+body.dark-mode .theme-toggle {
+    background: rgba(255, 255, 255, 0.08);
+    color: #E5E7EB;
+    border-color: rgba(255,255,255,0.16);
+}
+
 img {
     max-width: 100%;
     height: auto;

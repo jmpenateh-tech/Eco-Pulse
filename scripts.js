@@ -24,6 +24,42 @@ document.addEventListener('DOMContentLoaded', () => {
     $$('.navbar__link').forEach(link => {
         link.addEventListener('click', () => navMenu?.classList.remove('active'));
     });
+
+    const themeToggleBtn = $('#themeToggle');
+    const storedTheme = localStorage.getItem('siteTheme');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    const updateThemeButton = mode => {
+        if (!themeToggleBtn) return;
+        const icon = themeToggleBtn.querySelector('.theme-toggle__icon');
+        const text = themeToggleBtn.querySelector('.theme-toggle__text');
+        if (mode === 'dark') {
+            icon.textContent = '☀️';
+            text.textContent = 'Modo claro';
+        } else {
+            icon.textContent = '🌙';
+            text.textContent = 'Modo oscuro';
+        }
+    };
+
+    const setTheme = mode => {
+        if (mode === 'dark') {
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+        }
+        updateThemeButton(mode);
+        localStorage.setItem('siteTheme', mode);
+        updateMapTileLayer();
+    };
+
+    if (themeToggleBtn) {
+        const initialTheme = storedTheme || (prefersDark ? 'dark' : 'light');
+        setTheme(initialTheme);
+        themeToggleBtn.addEventListener('click', () => {
+            setTheme(document.body.classList.contains('dark-mode') ? 'light' : 'dark');
+        });
+    }
     
     // Cambiar estilo navbar al scroll
     window.addEventListener('scroll', () => {
@@ -76,7 +112,7 @@ document.querySelectorAll('.modal').forEach(modal => {
 
 const formReporte = document.getElementById('formReporte');
 if (formReporte) {
-    formReporte.addEventListener('submit', function(e) {
+    formReporte.addEventListener('submit', async function(e) {
         e.preventDefault();
         
         const formData = {
@@ -86,12 +122,20 @@ if (formReporte) {
             nombre: document.getElementById('nombre').value,
             email: document.getElementById('email').value
         };
+
+        const geocode = await geocodeAddress(formData.ubicacion);
+        const lat = geocode?.lat ?? (8.7402 + (Math.random() - 0.5) * 0.05);
+        const lng = geocode?.lng ?? (-75.7519 + (Math.random() - 0.5) * 0.05);
+
+        if (!geocode) {
+            showNotification('No se encontró la dirección exacta; se ubicó el reporte cerca de Montería.', 'warning');
+        }
         
         // Agregar el nuevo reporte al mapa
         const nuevoReporte = {
             id: Date.now(), // ID único basado en timestamp
-            lat: 8.7402 + (Math.random() - 0.5) * 0.1, // Coordenadas aleatorias cerca de Montería
-            lng: -75.7519 + (Math.random() - 0.5) * 0.1,
+            lat,
+            lng,
             categoria: formData.categoria,
             titulo: `Reporte de ${formData.categoria}`,
             descripcion: formData.descripcion,
@@ -103,6 +147,9 @@ if (formReporte) {
         // Agregar a los datos y actualizar mapa
         reportesData.push(nuevoReporte);
         addMarkerToMap(nuevoReporte);
+        if (map) {
+            map.setView([lat, lng], 15);
+        }
 
         console.log('Nuevo reporte agregado:', nuevoReporte);
 
@@ -155,12 +202,18 @@ if (formRegistro) {
 
 function showNotification(message, type = 'info') {
     const notification = document.createElement('div');
+    const backgroundColor = type === 'success'
+        ? '#43A047'
+        : type === 'warning'
+            ? '#FFA726'
+            : '#2E7D32';
+
     notification.style.cssText = `
         position: fixed;
         top: 20px;
         right: 20px;
         padding: 16px 24px;
-        background: ${type === 'success' ? '#43A047' : '#2E7D32'};
+        background: ${backgroundColor};
         color: white;
         border-radius: 12px;
         box-shadow: 0 4px 12px rgba(0,0,0,0.15);
@@ -178,11 +231,67 @@ function showNotification(message, type = 'info') {
     }, 3000);
 }
 
+async function geocodeAddress(address) {
+    if (!address) return null;
+    try {
+        const normalizedAddress = address.trim().replace(/\s+/g, ' ').toLowerCase();
+
+        const exactAddressMatch = /52\s*A.*6[-\s]*79|6[-\s]*79.*52\s*A/i;
+        if (exactAddressMatch.test(normalizedAddress) && /castellana/i.test(normalizedAddress)) {
+            return { lat: 8.7660555, lng: -75.8688002 };
+        }
+
+        const query = encodeURIComponent(`${normalizedAddress}, Montería, Córdoba, Colombia`);
+        const viewbox = '-75.90,8.83,-75.70,8.65';
+        const baseUrl = 'https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&accept-language=es&limit=5&q=';
+
+        const fetchResults = async (url) => {
+            const response = await fetch(url);
+            if (!response.ok) return [];
+            const data = await response.json();
+            return Array.isArray(data) ? data : [];
+        };
+
+        let results = await fetchResults(`${baseUrl}${query}&viewbox=${viewbox}&bounded=1`);
+        if (!results.length) {
+            results = await fetchResults(`${baseUrl}${query}`);
+        }
+        if (!results.length) return null;
+
+        const monteriaRegExp = /monter[ií]a/i;
+        const candidate = results.find(place => {
+            const display = place.display_name || '';
+            const addressParts = place.address || {};
+            return monteriaRegExp.test(display)
+                || monteriaRegExp.test(addressParts.city || '')
+                || monteriaRegExp.test(addressParts.town || '')
+                || monteriaRegExp.test(addressParts.village || '')
+                || monteriaRegExp.test(addressParts.county || '')
+                || monteriaRegExp.test(addressParts.state || '');
+        }) || results[0];
+
+        const lat = parseFloat(candidate.lat);
+        const lng = parseFloat(candidate.lon);
+
+        const isNearMonteria = lat >= 8.62 && lat <= 8.85 && lng >= -75.92 && lng <= -75.68;
+        if (!isNearMonteria) {
+            console.warn('Geocoding fuera de Montería:', { address, lat, lng, display_name: candidate.display_name });
+            return null;
+        }
+
+        return { lat, lng };
+    } catch (error) {
+        console.error('Error en geocodificación:', error);
+        return null;
+    }
+}
+
 // ========================================
 // MAPA INTERACTIVO CON LEAFLET
 // ========================================
 
 let map;
+let tileLayer;
 let markers = [];
 let currentFilter = 'all';
 let reportesData = [];
@@ -766,16 +875,28 @@ function formatDate(dateString) {
     return date.toLocaleDateString('es-ES');
 }
 
+function getTileLayer() {
+    return L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+        subdomains: 'abcd',
+        maxZoom: 20
+    });
+}
+
+function updateMapTileLayer() {
+    if (!map) return;
+    if (tileLayer) {
+        map.removeLayer(tileLayer);
+    }
+    tileLayer = getTileLayer();
+    tileLayer.addTo(map);
+}
+
 function initMap() {
     // Crear mapa centrado inicialmente en Córdoba, Colombia
     map = L.map('map').setView([8.7402, -75.7519], 9);
 
-    // Agregar tiles - Usar CartoDB Positron como alternativa gratuita sin restricciones
-    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 20
-    }).addTo(map);
+    updateMapTileLayer();
 
     // Cargar datos y luego agregar marcadores
     loadReportesData().then(() => {
@@ -802,7 +923,7 @@ function initMap() {
     });
 }
 
-function addMarkerToMap(reporte) {
+function addMarkerToMap(reporte, updateFilter = true) {
     const customIcon = L.divIcon({
         html: getMarkerHTML(reporte.categoria),
         iconSize: [40, 40],
@@ -818,7 +939,19 @@ function addMarkerToMap(reporte) {
     marker.data = reporte;
     markers.push(marker);
 
-    // Actualizar filtros si es necesario
+    if (updateFilter) {
+        filterMarkers();
+    }
+}
+
+function addMarkersToMap() {
+    if (!map) return;
+
+    // Limpiar marcadores anteriores para evitar duplicados o inconsistencias
+    markers.forEach(marker => marker.remove());
+    markers = [];
+
+    reportesData.forEach(reporte => addMarkerToMap(reporte, false));
     filterMarkers();
 }
 
